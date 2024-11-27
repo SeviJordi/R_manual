@@ -113,7 +113,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./io.html">3. I/O</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      R manual
+      </li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -162,7 +164,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./io.html" class="sidebar-item-text sidebar-link active">
+  <a href="./io.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">3. I/O</span></a>
   </div>
 </li>
@@ -206,10 +208,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#data-import-and-export" id="toc-data-import-and-export" class="nav-link active" data-scroll-target="#data-import-and-export">Data import and export</a>
+  <li><a href="#data-manipulation" id="toc-data-manipulation" class="nav-link active" data-scroll-target="#data-manipulation">Data manipulation</a>
   <ul>
-  <li><a href="#importing-data" id="toc-importing-data" class="nav-link" data-scroll-target="#importing-data">Importing data</a></li>
-  <li><a href="#exporting-data" id="toc-exporting-data" class="nav-link" data-scroll-target="#exporting-data">Exporting data</a></li>
   <li><a href="#excercises" id="toc-excercises" class="nav-link" data-scroll-target="#excercises">Excercises</a></li>
   </ul></li>
   </ul>
@@ -221,77 +221,83 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="data-import-and-export" class="level1">
-<h1>Data import and export</h1>
-<p>To start working with data in R, you need to import it into the R environment. R supports a wide range of file formats for data import, including CSV, Excel, and databases. You can also export data from R to different file formats.</p>
-<section id="importing-data" class="level2">
-<h2 class="anchored" data-anchor-id="importing-data">Importing data</h2>
-<p>You can import data into R using functions like <code>read.csv()</code>, <code>read.table()</code>. Here’s an example of importing a CSV file:</p>
+<section id="data-manipulation" class="level1">
+<h1>Data manipulation</h1>
+<div style="text-align: justify">
+
+<p>For data manipulation in R, you can use functions from the <code>dplyr</code> package. The <code>dplyr</code> package provides a set of functions that make it easy to filter, select, mutate, and summarize data, consult the <code>dplyr</code> <a href="https://nyu-cdsc.github.io/learningr/assets/data-transformation.pdf">cheet sheet</a>. Dplyr package is part of the <code>tidyverse</code>, a collection of R packages designed for data science. Tidyverse package can be installed using the following command:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import data from a CSV file</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Daca can come from the internet or local files</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://raw.githubusercontent.com/SeviJordi/R_manual/refs/heads/main/data/iris.csv"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)  <span class="co"># Display the first few rows of the data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># Load the tidyverse package</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<div class="cell-output-display">
-<table class="table table-sm table-striped small">
+<p>Some key functions from the <code>dplyr</code> package include:</p>
+<table class="table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 38%">
+<col style="width: 45%">
+</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: right;">Sepal.Length</th>
-<th style="text-align: right;">Sepal.Width</th>
-<th style="text-align: right;">Petal.Length</th>
-<th style="text-align: right;">Petal.Width</th>
-<th style="text-align: left;">Species</th>
+<th><strong>Function</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Example</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">5.1</td>
-<td style="text-align: right;">3.5</td>
-<td style="text-align: right;">1.4</td>
-<td style="text-align: right;">0.2</td>
-<td style="text-align: left;">setosa</td>
+<td><code>filter()</code></td>
+<td>Subset rows based on conditions</td>
+<td><code>filter(df, Age &gt; 25)</code></td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">4.9</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">1.4</td>
-<td style="text-align: right;">0.2</td>
-<td style="text-align: left;">setosa</td>
+<td><code>select()</code></td>
+<td>Choose specific columns</td>
+<td><code>select(df, Name, Score)</code></td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">4.7</td>
-<td style="text-align: right;">3.2</td>
-<td style="text-align: right;">1.3</td>
-<td style="text-align: right;">0.2</td>
-<td style="text-align: left;">setosa</td>
+<td><code>mutate()</code></td>
+<td>Add or modify columns</td>
+<td><code>mutate(df, NewScore = Score + 5)</code></td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">4.6</td>
-<td style="text-align: right;">3.1</td>
-<td style="text-align: right;">1.5</td>
-<td style="text-align: right;">0.2</td>
-<td style="text-align: left;">setosa</td>
+<td><code>arrange()</code></td>
+<td>Sort rows by column values</td>
+<td><code>arrange(df, desc(Score))</code></td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">5.0</td>
-<td style="text-align: right;">3.6</td>
-<td style="text-align: right;">1.4</td>
-<td style="text-align: right;">0.2</td>
-<td style="text-align: left;">setosa</td>
+<td><code>summarize()</code></td>
+<td>Create summary statistics</td>
+<td><code>summarize(df, AvgScore = mean(Score))</code></td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">5.4</td>
-<td style="text-align: right;">3.9</td>
-<td style="text-align: right;">1.7</td>
-<td style="text-align: right;">0.4</td>
-<td style="text-align: left;">setosa</td>
+<td><code>group_by()</code></td>
+<td>Group data for grouped operations</td>
+<td><code>group_by(df, Passed)</code></td>
 </tr>
 </tbody>
 </table>
-</div>
+<p>Some examples of usage:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The iris dataset is included in R by default</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter rows where Sepal.Length &gt; 3</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>filtered_iris <span class="ot">&lt;-</span> <span class="fu">filter</span>(iris, Sepal.Length <span class="sc">&gt;</span> <span class="dv">3</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Select Sepal.Length and Sepal.Width columns</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>selected_iris <span class="ot">&lt;-</span> <span class="fu">select</span>(iris, Sepal.Length, Sepal.Width)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the product of Petal.Length and Petal.Width as a new column</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>mutated_iris <span class="ot">&lt;-</span> <span class="fu">mutate</span>(iris,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                       <span class="at">Petal.Area =</span> Petal.Length <span class="sc">*</span> Petal.Width</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>                )</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort data by Sepal.Length in descending order</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>arranged_iris <span class="ot">&lt;-</span> <span class="fu">arrange</span>(iris, <span class="fu">desc</span>(Sepal.Length))</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by Species and calculate the mean Sepal.Length for each group</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>grouped_summary <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">AvgSepalLength =</span> <span class="fu">mean</span>(Sepal.Length))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -303,26 +309,9 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Tabular data can be separated by commas, tabs, or other delimiters. You can specify the delimiter using the <code>sep</code> argument in the <code>read.csv()</code> function. By default, it assumes a comma as the delimiter.</p>
+<p>Use the pipe operator <code>%&gt;%</code> to chain multiple <code>dplyr</code> functions together. The pipe operator passes the output of one function as the input to the next function.</p>
 </div>
 </div>
-</section>
-<section id="exporting-data" class="level2">
-<h2 class="anchored" data-anchor-id="exporting-data">Exporting data</h2>
-<p>You can export data from R to different file formats using functions like <code>write.csv()</code>, <code>write.table()</code>. Here’s an example of exporting data to a CSV file:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Export data to a CSV file</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(data, <span class="st">"data.csv"</span>) <span class="co"># Save the data to a file named "data.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>By default, the <code>write.csv()</code> function includes row names in the output file. You can disable this by setting <code>row.names = FALSE</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(data, <span class="st">"data.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><code>write.csv()</code> stores data in CSV format, but you can use <code>write.table()</code> to export data in other formats like tab-separated values (TSV) or plain text.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(data, <span class="st">"data.txt"</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>) <span class="co"># Export data as tab-separated values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
 <section id="excercises" class="level2">
 <h2 class="anchored" data-anchor-id="excercises">Excercises</h2>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -335,11 +324,12 @@ Exercise
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<p>For this exercise, use the <code>kleb_data</code> dataset. <a href="https://raw.githubusercontent.com/SeviJordi/R_manual/refs/heads/main/data/kleb_data.csv" class="uri">https://raw.githubusercontent.com/SeviJordi/R_manual/refs/heads/main/data/kleb_data.csv</a>.</p>
 <ol type="1">
-<li><p>Read the CSV file kleb_data.csv from the following URL: <a href="https://raw.githubusercontent.com/SeviJordi/R_manual/refs/heads/main/data/kleb_data.csv" class="uri">https://raw.githubusercontent.com/SeviJordi/R_manual/refs/heads/main/data/kleb_data.csv</a>.</p></li>
-<li><p>Show the first rows of the data.</p></li>
-<li><p>Export the data to a tab-separated values (TSV) file named <code>kleb_data.tsv</code>.</p></li>
+<li><p>How many different countries are represented in the dataset?</p></li>
+<li><p>What is the maximum and minimum year of collection (Year) in the dataset?</p></li>
 </ol>
+<p>3 Get the average MIC (use the <em>meropenem_MIC_clean</em> column) for each sequence type (ST). Sort the results by the average MIC in ascending order.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -355,14 +345,46 @@ Solution
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exercise 1</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://raw.githubusercontent.com/SeviJordi/R_manual/refs/heads/main/data/kleb_data.csv"</span>)</span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://raw.githubusercontent.com/SeviJordi/R_manual/refs/heads/main/data/kleb_data.csv"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Exercise 1</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>Country <span class="sc">%&gt;%</span> <span class="fu">unique</span>() <span class="sc">%&gt;%</span> <span class="fu">length</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 29</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the $ operator to access a column in a data frame.</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Look for the n_distinct() function in the dplyr package and try it.</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Exercise 2</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Exercise 3</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(data, <span class="st">"kleb_data.tsv"</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>Year <span class="sc">%&gt;%</span> <span class="fu">max</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2014</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>Year <span class="sc">%&gt;%</span> <span class="fu">min</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2012</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exercise 3</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ST) <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">AvgMIC =</span> <span class="fu">mean</span>(meropenem_MIC_clean)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(AvgMIC))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 250 × 2
+   ST     AvgMIC
+   &lt;chr&gt;   &lt;dbl&gt;
+ 1 ST1961   48  
+ 2 ST3666   48  
+ 3 ST512    43.3
+ 4 ST258    31.0
+ 5 ST525    18.7
+ 6 ST395    16.4
+ 7 ST449    16.0
+ 8 ST38     16  
+ 9 ST101    13.3
+10 ST274    10  
+# ℹ 240 more rows</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -370,7 +392,7 @@ Solution
 
 
 </section>
-</section>
+</div></section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
