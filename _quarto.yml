@@ -1,0 +1,58 @@
+project:
+  type: website
+  output-dir: docs
+  
+website:
+  announcement:
+    icon: info-circle
+    content: "**Alert** - Page under development"
+    dismissable: true
+    position: below-navbar
+  twitter-card:
+    creator: "@JordiiSevilla"
+  page-navigation: true
+  title: "R manual" 
+  navbar:
+    search: true
+    pinned: true
+  sidebar:
+    tools:
+      - icon: twitter
+        href: https://x.com/JordiiSevilla
+      - icon: github
+        href: https://github.com/SeviJordi
+    style: "floating"
+    contents:
+      - text: "Home"
+        href: src/index.qmd
+      - text: "1. Start"
+        href: src/start.qmd
+      - text: "2. Basics"
+        href: src/basics.qmd
+      - text: "3. Files"
+        href: src/files.qmd
+      - text: "4. I/O"
+        href: src/io.qmd
+      - text: "5. Data manipulation"
+        href: src/data_man.qmd
+      - text: "6. Data visualization"
+        href: src/data_viz.qmd
+      - text: "7. Statistics"
+        href: src/stats.qmd
+      - text: "8. Programming"
+        href: src/programming.qmd
+      - text: "9. Final project"
+        href: src/fin_proj.qmd
+ 
+    
+format:
+  html:
+    theme:
+      light: united
+      dark: darkly
+    self-contained: false
+    toc: true
+    toc-depth: 10
+engine: knitr
+editor: visual
+

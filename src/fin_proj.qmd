@@ -1,5 +1,12 @@
 # Final Project
 
+```{css}
+#| echo: false
+p {
+  text-align: justify
+}
+```
+
 For the final project, you will analyze a dataset of your choice using the techniques and concepts covered in this manual. You can choose any dataset that interests you or is relevant to your field of study. Here are some steps to guide you through the project:
 
 1.  **Choose a dataset**: Find a dataset that interests you or is relevant to your field of study. You can use datasets from online repositories.
@@ -19,3 +26,6 @@ You can found a lot of datasets in the following repositories:
 You can also uso any of the datasets that we have used in this manual.
 :::
 
+```{R eval=FALSE, include=FALSE}
+
+```

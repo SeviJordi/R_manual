@@ -1,6 +1,11 @@
 # Data manipulation
 
-<div style="text-align: justify">
+```{css}
+#| echo: false
+p {
+  text-align: justify
+}
+```
 
 For data manipulation in R, you can use functions from the `dplyr` package. The `dplyr` package provides a set of functions that make it easy to filter, select, mutate, and summarize data, consult the `dplyr` [cheet sheet](https://nyu-cdsc.github.io/learningr/assets/data-transformation.pdf). Dplyr package is part of the `tidyverse`, a collection of R packages designed for data science. Tidyverse package can be installed using the following command:
 
@@ -43,10 +48,13 @@ mutated_iris <- mutate(iris,
 arranged_iris <- arrange(iris, desc(Sepal.Length))
 
 # Group by Species and calculate the mean Sepal.Length for each group
-grouped_summary <- iris %>%
-  group_by(Species) %>%
-  summarize(AvgSepalLength = mean(Sepal.Length))
+grouped_summary <- iris %>% 
+  group_by(Species) %>% # <1>
+  summarize(AvgSepalLength = mean(Sepal.Length)) # <2>
 ```
+
+1. The `group_by()` function is used to group the data by the `Species` column.
+2. The `summarize()` function calculates the mean `Sepal.Length` for each group.
 
 ::: callout-tip
 Use the pipe operator `%>%` to chain multiple `dplyr` functions together. The pipe operator passes the output of one function as the input to the next function.
@@ -63,18 +71,19 @@ For this exercise, use the `kleb_data` dataset. <https://raw.githubusercontent.c
 
 2.  What is the maximum and minimum year of collection (Year) in the dataset?
 
-3 Get the average MIC (use the *meropenem_MIC_clean* column) for each sequence type (ST). Sort the results by the average MIC in ascending order.
+3.  Get the average MIC (use the *meropenem_MIC_clean* column) for each sequence type (ST). Sort the results by the average MIC in ascending order.
 :::
 
 ::: {.callout-note collapse="true"}
 ## Solution
 
-```{r}
+```{r eval=FALSE}
 data <- read.csv("https://raw.githubusercontent.com/SeviJordi/R_manual/refs/heads/main/data/kleb_data.csv")
 
 # Exercise 1
-data$Country %>% unique() %>% length()
-# Use the $ operator to access a column in a data frame.
+data$Country %>% # <1>
+  unique() %>% # <2>
+  length() # <3>
 # Look for the n_distinct() function in the dplyr package and try it.
 
 # Exercise 2
@@ -85,6 +94,12 @@ data$Year %>% min()
 data %>%
   group_by(ST) %>%
   summarize(AvgMIC = mean(meropenem_MIC_clean)) %>%
-  arrange(desc(AvgMIC))
+  arrange(desc(AvgMIC)) # <4>
 ```
+
+1. Extract the `Country` column from the dataset using the `$` operator.
+2. Use the `unique()` function to get the unique values in the `Country` column.
+3. Use the `length()` function to count the number of unique countries.
+4. The `arrange()` function is used to sort the results by the `AvgMIC` column in descending order.
+
 :::

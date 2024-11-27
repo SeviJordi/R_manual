@@ -1,6 +1,11 @@
 # Statistical analysis
 
-<div style="text-align: justify">
+```{css}
+#| echo: false
+p {
+  text-align: justify
+}
+```
 
 R is a powerful tool for statistical analysis. It provides a wide range of functions and packages for conducting statistical tests, modeling data, and exploring relationships between variables. In this section, we'll cover some basic statistical analysis techniques using R.
 
@@ -10,32 +15,33 @@ Descriptive statistics are used to summarize and describe the main features of a
 
 Let's calculate some descriptive statistics for the `iris` dataset.
 
-```{r}
+```{r eval=FALSE}
 # Calculate the mean, median, standard deviation, variance, range, and 
 #  quantiles for Sepal.Length
 
-# Mean (average)
-mean(iris$Sepal.Length)
+mean(iris$Sepal.Length) # <1>
 
-# Median (middle value)
-median(iris$Sepal.Length)
+median(iris$Sepal.Length) # <2>
 
-# Standard deviation (spread of data)
-sd(iris$Sepal.Length)
+sd(iris$Sepal.Length) # <3>
 
-# Variance (spread of data squared)
-var(iris$Sepal.Length)
+var(iris$Sepal.Length) # <4>
 
-# Range (difference between max and min)
-range(iris$Sepal.Length)
+range(iris$Sepal.Length) # <5>
 
-# Quantiles (values that divide the dataset into parts)
-quantile(iris$Sepal.Length)
+quantile(iris$Sepal.Length) # <6>
 
-# Calculate the summary statistics Sepal.Length
-summary(iris$Sepal.Length)
+summary(iris$Sepal.Length) # <7>
 
 ```
+
+1. Mean: The average value of the variable.
+2. Median: The middle value of the variable.
+3. Standard deviation: A measure of the spread of the data.
+4. Variance: The square of the standard deviation.
+5. Range: The difference between the maximum and minimum values.
+6. Quantiles: Values that divide the dataset into parts.
+7. Summary: A summary of the main descriptive statistics.
 
 ## Hypothesis testing
 
@@ -71,7 +77,7 @@ t.test(iris$Sepal.Length, iris$Sepal.Width)
 
 1.  Perform a one-sample t-test to check if the mean Sepal.Width is significantly different from 3.15. Is the same to check if it is geater than 3.15? Investigate.
 
-2.Using the data from the `bd_students.csv`, compare the math and science grades. Are they significantly different? Investigate.
+2.  Using the data from the `bd_students.csv`, compare the math and science grades. Are they significantly different? Investigate.
 :::
 
 ::: {.callout-note collapse="true"}
@@ -79,29 +85,24 @@ t.test(iris$Sepal.Length, iris$Sepal.Width)
 
 ```{r}
 # One-sample t-test
-# Check if the mean Sepal.Width is significantly different from 3.0
-test <- t.test(iris$Sepal.Width, mu = 3.15)
-sprintf("The p-value is %f", test$p.value)
-
-# The p-value is less than 0.05, so we reject the null hypothesis that
-#  the mean Sepal.Width is equal to 3.15.
+test <- t.test(iris$Sepal.Width, mu = 3.15) # <1>
+sprintf("The p-value for one sample is %f", test$p.value) # <1>
 
 # We can also check if the mean Sepal.Width is greater than 3.15
-test <- t.test(iris$Sepal.Width, mu = 3.15, alternative = "greater")
-sprintf("The p-value is %f", test$p.value)
-
-# The p-value is greater than 0.05, so we fail to reject the null hypothesis
-#  that the mean Sepal.Width is greater than 3.15.
+test <- t.test(iris$Sepal.Width, mu = 3.15, alternative = "greater") # <2>
+sprintf("The p-value for one sample (greater) is: %f", test$p.value) # <2>
 
 # Two-sample t-test
 # Check if the mean math and science grades are significantly different
 data <- read.csv("https://raw.githubusercontent.com/SeviJordi/R_manual/refs/heads/main/data/bd_students.csv")
-test <- t.test(data$math, data$science)
-sprintf("The p-value is %f", test$p.value)
+test <- t.test(data$math, data$science) # <3>
+sprintf("The p-value for two samples is %f", test$p.value) # <3>
 
-# The p-value is less than 0.05, so we reject the null hypothesis that the
-#  mean math and science grades are equal.
 ```
+
+1. The p-value is less than 0.05, so we reject the null hypothesis that the mean Sepal.Width is equal to 3.15.
+2. The p-value is greater than 0.05, so we fail to reject the null hypothesis that the mean Sepal.Width is greater than 3.15.
+3. The p-value is less than 0.05, so we reject the null hypothesis that the mean math and science grades are equal.
 :::
 
 ### Chi-square test
@@ -114,11 +115,11 @@ The chi-square test returns the chi-square statistic, degrees of freedom, and p-
 # Chi-square test
 # Check if there is a significant association between the student
 #  group and the location
-chisq.test(data$stu_group, data$location)
+chisq.test(data$stu_group, data$location) # <1>
 
-# The p-value is less than 0.05, so we reject the null hypothesis that
-#  the student group and location are independent.
 ```
+
+1. The p-value is less than 0.05, so we reject the null hypothesis that the student group and location are independent.
 
 ### ANOVA
 
@@ -128,14 +129,14 @@ The ANOVA test returns the F-statistic, degrees of freedom, and p-value. A small
 
 ```{r}
 # Test if the math grades are equal for the different student groups
-model <- aov(math ~ stu_group, data = data) 
-# Formula: dependent variable ~ independent variable
-summary(model)
+model <- aov(math ~ stu_group, data = data) # <1>
 
-# The p-value is less than 0.05, so we reject the null hypothesis that
-#  the math grades are equal for the different student groups.
-# It is seen in the plot we made before.
+summary(model) # <2>
+
 ```
+
+1. Formula: dependent variable ~ independent variable
+2. The p-value is less than 0.05, so we reject the null hypothesis that the math grades are equal for the different student groups. It is seen in the plot we made before.
 
 ::: callout-important
 ## Exercise
@@ -146,14 +147,13 @@ summary(model)
 ::: {.callout-note collapse="true"}
 ## Solution
 
-```{r}
+```{r eval=FALSE}
 # Test if the science grades are equal for the different locations
-model <- aov(science ~ location, data = data)
-summary(model)
-
-# The p-value is less than 0.05, so we reject the null hypothesis that
-#  the science grades are equal for the different locations.
+model <- aov(science ~ location, data = data) # <1>
+summary(model) # <1>
 ```
+
+1. The p-value is less than 0.05, so we reject the null hypothesis that the science grades are equal for the different locations.
 :::
 
 ### Correlation
@@ -164,14 +164,16 @@ Correlation is used to measure the strength and direction of the relationship be
 # Calculate the correlation between Sepal.Length and Sepal.Width in the 
 #  iris dataset
 
-corelation <- cor(iris$Sepal.Length, iris$Sepal.Width)
-sprintf("The correlation coefficient is %f", corelation)
+corelation <- cor(iris$Sepal.Length, iris$Petal.Length) # <1>
+sprintf("The correlation coefficient is %f", corelation) # <1>
 
 # Is significant?
-test <- cor.test(iris$Sepal.Length, iris$Sepal.Width)
-sprintf("The p-value is %f", test$p.value)
-
+test <- cor.test(iris$Sepal.Length, iris$Petal.Length) # <2>
+sprintf("The p-value is %f", test$p.value) # <2>
 ```
+
+1. Get the correlation coefficient.
+2. Test if the correlation is significant.
 
 ::: callout-important
 ## Exercise
@@ -186,16 +188,17 @@ sprintf("The p-value is %f", test$p.value)
 data <- read.csv("https://raw.githubusercontent.com/SeviJordi/R_manual/refs/heads/main/data/bd_students.csv")
 
 # Calculate the correlation between the math and science grades
-correlation <- cor(data$math, data$science)
-sprintf("The correlation coefficient is %f", correlation)
+correlation <- cor(data$math, data$science) # <1>
+sprintf("The correlation coefficient is %f", correlation) # <1>
 
 # Is the correlation significant?
-test <- cor.test(data$math, data$science)
-sprintf("The p-value is %f", test$p.value)
+test <- cor.test(data$math, data$science) # <2>
+sprintf("The p-value is %f", test$p.value) # <2>
 
-# The p-value is less than 0.05, so we reject the null hypothesis that
-#  the correlation between math and science grades is zero.
 ```
+
+1. There is a strong positive correlation between the math and science grades.
+2. The p-value is less than 0.05, so we reject the null hypothesis that the correlation between math and science grades is zero.
 :::
 
 ### Linear Regression
@@ -224,20 +227,18 @@ For the linear model that we just made, the p-value is `r summary(model)$coeffic
 ```{r}
 data <- read.csv("https://raw.githubusercontent.com/SeviJordi/R_manual/refs/heads/main/data/bd_students.csv")
 
-# Fit a linear regression model to predict math grade from science grade
-model <- lm(math ~ science, data = data)
-sum <- summary(model)
+model <- lm(math ~ science, data = data) # <1>
+sum <- summary(model) # <1>
 
 # Is the relationship significant?
-sprintf("The p-value is %f", sum$coefficients[2,4])
-# The p-value is less than 0.05, so we reject the null hypothesis that
-#  the science grade is not a significant predictor of the math grade.
+sprintf("The p-value is %f", sum$coefficients[2,4]) # <2>
 
 # How much of the variance in the math grade is explained by the science grade?
-sprintf("The proportion of variance explained is %f", sum$r.squared)
-# The proportion of variance explained is 0.64, which means that 64% of the
-#  variance in the math grade is predictable from the science grade.
-
+sprintf("The proportion of variance explained is %f", sum$r.squared) # <3>
 ```
+
+1. Fit a linear regression model to predict the math grade from the science grade.
+2. The p-value is less than 0.05, so we reject the null hypothesis that the science grade is not a significant predictor of the math grade.
+3. The proportion of variance explained is 0.64, which means that 64% of the variance in the math grade is predictable from the science grade.
 :::
 

@@ -1,7 +1,12 @@
 # Preface {.unnumbered}
 
 
-<div style="text-align: justify">
+```{css}
+#| echo: false
+p {
+  text-align: justify
+}
+```
 
 Hey there, and welcome! This manual is your hands-on guide to learning R, one of the most popular tools for data analysis, visualization, and statistical computing. R is an incredibly versatile programming language used by researchers, data analysts, and professionals all over the world. It's open-source (free!), packed with powerful tools, and has a massive community of users ready to share tips and tricks.
 This is a Quarto book.

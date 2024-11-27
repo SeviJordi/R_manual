@@ -1,6 +1,15 @@
 # Getting started with R
 
-<div style="text-align: justify">
+---
+engine: knitr
+---
+
+```{css}
+#| echo: false
+p {
+  text-align: justify
+}
+```
 
 Before we can start coding, let's install the necessary tools:
 
@@ -23,3 +32,8 @@ Once you open RStudio, you'll see a user-friendly interface with four main panel
 4.  **Files/Plots/Packages/Help**: View files, plots, installed packages, and access help documentation.
 
 Take a moment to explore these panels. They'll become your primary workspace as you work with R.
+
+```{R eval=FALSE, include=FALSE}
+
+```
+

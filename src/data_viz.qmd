@@ -1,6 +1,12 @@
 # Data visualization
 
-<div style="text-align: justify">
+```{css}
+#| echo: false
+p {
+  text-align: justify
+}
+```
+
 
 Data visualization is one of the most powerful ways to communicate your data insights. R has several options for creating visualizations, from base R graphics to advanced plotting libraries like **ggplot2**. In this section, we'll focus on the **ggplot2** package, which provides a flexible, powerful, and elegant system for creating visualizations. **ggplot2** is part of the **tidyverse** package, so you can load it by loading the **tidyverse** package. See the **ggplot2 cheat sheet** [here](https://posit.co/wp-content/uploads/2022/10/data-visualization-1.pdf).
 
@@ -21,12 +27,17 @@ We are going to run some examples using the `iris` dataset, which is included in
 ```{r message=FALSE, warning=FALSE, echo=TRUE}
 library(tidyverse) # Load the tidyverse package
 
-p <- ggplot(iris) + # create a ggplot object with the data
-  aes(x = Sepal.Length, y = Petal.Length) + # map variables to visual properties with aes()
-  geom_point() # add points to the plot
+p <- ggplot(iris) + # <1>
+  aes(x = Sepal.Length, y = Petal.Length) + # <2>
+  geom_point() # <3>
 
-p # display the plot
+p # <4>
 ```
+
+1.  The `ggplot()` function initializes a ggplot object.
+2.  The `aes()` function specifies the aesthetics of the plot. In this case, we map the `Sepal.Length` variable to the x-axis and the `Petal.Length` variable to the y-axis.
+3.  The `geom_point()` function adds points to the plot.
+4.  The plot is stored in the variable `p`, and we print it to the console.
 
 We can customize the plot by changing the labs. The `labs()` function is used to set the titles of the plot and axes.
 
@@ -68,24 +79,21 @@ Explore the posibility of doing more complex plots with ggplot2. You can find mo
 ::: {.callout-note collapse="true"}
 ## Solution
 
-```{r}
+```{r eval=FALSE}
 data <- read.csv("https://raw.githubusercontent.com/SeviJordi/R_manual/refs/heads/main/data/bd_students.csv")
 
 # Exercise 2
-data %>%
-  ggplot(aes(x = stu_group)) +
-  geom_bar() + 
-  labs(title = "Number of students by group",
-       x = "Student group",
-       y = "Number of students") + 
-  theme_bw()
+data %>% # <1>
+  ggplot(aes(x = stu_group)) + # <1>
+  geom_bar() + # <1>
+  labs(title = "Number of students by group", # <1>
+       x = "Student group", # <1>
+       y = "Number of students") + # <1>
+  theme_bw() # <1>
 
-# We can see that there is a problem with the student groups. 
-#  Sometimes they are capitalized and sometimes not. 
-#  We can fix this by using the tolower() function.
 
-data <- data %>%
-  mutate(stu_group = tolower(stu_group))
+data <- data %>% # <2>
+  mutate(stu_group = tolower(stu_group)) # <2>
 
 # Now we can create the plot again
 data %>%
@@ -97,26 +105,29 @@ data %>%
   theme_bw()
 
 # Exercise 3
-data %>%
-  ggplot(aes(x = english, y = math)) +
-  geom_point() +
-  labs(title = "Scatter plot of English vs. Math",
-       x = "English",
-       y = "Math") +
-  theme_bw()
+data %>% # <3>
+  ggplot(aes(x = english, y = math)) + # <3>
+  geom_point() + # <3>
+  labs(title = "Scatter plot of English vs. Math", # <3>
+       x = "English", # <3>
+       y = "Math") + # <3>
+  theme_bw() # <3>
 
-# The variables are positively correlated and there are three clusters 
-#  in the data. We can color the points by the student group to see if 
-#  the clusters are related to this variable.
-
-data %>%
-  ggplot(aes(x = english, y = math, color = stu_group)) +
-  geom_point() +
-  labs(title = "Scatter plot of English vs. Math",
-       x = "English",
-       y = "Math") +
-  theme_bw()
+data %>% # <4>
+  ggplot(aes(x = english, y = math, color = stu_group)) + # <4>
+  geom_point() + # <4>
+  labs(title = "Scatter plot of English vs. Math", # <4>
+       x = "English", # <4>
+       y = "Math") + # <4>
+  theme_bw() # <4>
 
 ```
+
+1. We can see that there is a problem with the student groups. Sometimes they are capitalized and sometimes not. 
+2. We can fix this by using the tolower() function.
+3. The variables are positively correlated and there are three clusters in the data. 
+4. We can color the points by the student group to see if the clusters are related to this variable.
 :::
+
+
 
