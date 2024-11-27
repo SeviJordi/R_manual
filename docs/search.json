@@ -1,0 +1,42 @@
+[
+  {
+    "objectID": "io.html",
+    "href": "io.html",
+    "title": "Data import and export",
+    "section": "",
+    "text": "To start working with data in R, you need to import it into the R environment. R supports a wide range of file formats for data import, including CSV, Excel, and databases. You can also export data from R to different file formats.\n\n\nYou can import data into R using functions like read.csv(), read.table(). Here’s an example of importing a CSV file:\n\n# Import data from a CSV file\n# Daca can come from the internet or local files\ndata &lt;- read.csv(\"https://raw.githubusercontent.com/SeviJordi/R_manual/refs/heads/main/data/iris.csv\")\n\nhead(data)  # Display the first few rows of the data\n\n\n\n\n\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\nSpecies\n\n\n\n\n5.1\n3.5\n1.4\n0.2\nsetosa\n\n\n4.9\n3.0\n1.4\n0.2\nsetosa\n\n\n4.7\n3.2\n1.3\n0.2\nsetosa\n\n\n4.6\n3.1\n1.5\n0.2\nsetosa\n\n\n5.0\n3.6\n1.4\n0.2\nsetosa\n\n\n5.4\n3.9\n1.7\n0.4\nsetosa\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nTabular data can be separated by commas, tabs, or other delimiters. You can specify the delimiter using the sep argument in the read.csv() function. By default, it assumes a comma as the delimiter.\n\n\n\n\n\nYou can export data from R to different file formats using functions like write.csv(), write.table(). Here’s an example of exporting data to a CSV file:\n\n# Export data to a CSV file\nwrite.csv(data, \"data.csv\") # Save the data to a file named \"data.csv\"\n\nBy default, the write.csv() function includes row names in the output file. You can disable this by setting row.names = FALSE.\n\nwrite.csv(data, \"data.csv\", row.names = FALSE)\n\nwrite.csv() stores data in CSV format, but you can use write.table() to export data in other formats like tab-separated values (TSV) or plain text.\n\nwrite.table(data, \"data.txt\", sep = \"\\t\") # Export data as tab-separated values\n\n\n\n\n\n\n\n\n\n\nExercise\n\n\n\n\nRead the CSV file kleb_data.csv from the following URL: https://raw.githubusercontent.com/SeviJordi/R_manual/refs/heads/main/data/kleb_data.csv.\nShow the first rows of the data.\nExport the data to a tab-separated values (TSV) file named kleb_data.tsv.\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n# Exercise 1\ndata &lt;- read.csv(\"https://raw.githubusercontent.com/SeviJordi/R_manual/refs/heads/main/data/kleb_data.csv\")\n\n# Exercise 2\nhead(data)\n\n# Exercise 3\nwrite.table(data, \"kleb_data.tsv\", sep = \"\\t\")",
+    "crumbs": [
+      "3. I/O"
+    ]
+  },
+  {
+    "objectID": "io.html#importing-data",
+    "href": "io.html#importing-data",
+    "title": "Data import and export",
+    "section": "",
+    "text": "You can import data into R using functions like read.csv(), read.table(). Here’s an example of importing a CSV file:\n\n# Import data from a CSV file\n# Daca can come from the internet or local files\ndata &lt;- read.csv(\"https://raw.githubusercontent.com/SeviJordi/R_manual/refs/heads/main/data/iris.csv\")\n\nhead(data)  # Display the first few rows of the data\n\n\n\n\n\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\nSpecies\n\n\n\n\n5.1\n3.5\n1.4\n0.2\nsetosa\n\n\n4.9\n3.0\n1.4\n0.2\nsetosa\n\n\n4.7\n3.2\n1.3\n0.2\nsetosa\n\n\n4.6\n3.1\n1.5\n0.2\nsetosa\n\n\n5.0\n3.6\n1.4\n0.2\nsetosa\n\n\n5.4\n3.9\n1.7\n0.4\nsetosa\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nTabular data can be separated by commas, tabs, or other delimiters. You can specify the delimiter using the sep argument in the read.csv() function. By default, it assumes a comma as the delimiter.",
+    "crumbs": [
+      "3. I/O"
+    ]
+  },
+  {
+    "objectID": "io.html#exporting-data",
+    "href": "io.html#exporting-data",
+    "title": "Data import and export",
+    "section": "",
+    "text": "You can export data from R to different file formats using functions like write.csv(), write.table(). Here’s an example of exporting data to a CSV file:\n\n# Export data to a CSV file\nwrite.csv(data, \"data.csv\") # Save the data to a file named \"data.csv\"\n\nBy default, the write.csv() function includes row names in the output file. You can disable this by setting row.names = FALSE.\n\nwrite.csv(data, \"data.csv\", row.names = FALSE)\n\nwrite.csv() stores data in CSV format, but you can use write.table() to export data in other formats like tab-separated values (TSV) or plain text.\n\nwrite.table(data, \"data.txt\", sep = \"\\t\") # Export data as tab-separated values",
+    "crumbs": [
+      "3. I/O"
+    ]
+  },
+  {
+    "objectID": "io.html#excercises",
+    "href": "io.html#excercises",
+    "title": "Data import and export",
+    "section": "",
+    "text": "Exercise\n\n\n\n\nRead the CSV file kleb_data.csv from the following URL: https://raw.githubusercontent.com/SeviJordi/R_manual/refs/heads/main/data/kleb_data.csv.\nShow the first rows of the data.\nExport the data to a tab-separated values (TSV) file named kleb_data.tsv.\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n# Exercise 1\ndata &lt;- read.csv(\"https://raw.githubusercontent.com/SeviJordi/R_manual/refs/heads/main/data/kleb_data.csv\")\n\n# Exercise 2\nhead(data)\n\n# Exercise 3\nwrite.table(data, \"kleb_data.tsv\", sep = \"\\t\")",
+    "crumbs": [
+      "3. I/O"
+    ]
+  }
+]
