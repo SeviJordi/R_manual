@@ -1,0 +1,199 @@
+# R basics
+
+<div style="text-align: justify">
+
+Here's a quick overview of R's syntax and rules:
+
+::: {.callout-tip collapse="true"}
+## Tips
+
+-   Use the Tab key for auto-completion.
+-   Use the up arrow in the Console to cycle through previous commands.
+-   Access help for any function by typing `?function_name` or `help(function_name)`.
+:::
+
+## Comments
+
+Use `#` to add comments to your code. R ignores everything after `#`.
+
+```{r}
+# This is a comment
+```
+
+## Assigning values
+
+Use `<-` or `=` to assign values to variables.
+
+```{r}
+variable1 = 5 # Assigns the value 5 to variable1
+variable2 <- 10 # Assigns the value 10 to variable2
+```
+
+The R variables follow some naming conventions:
+
+-   Variable names must start with a letter and can contain letters, numbers, and underscores (\_).
+-   Avoid using reserved words like if, for, while, etc
+
+## Data types in R
+
+R has several data types, including numeric, character, logical, and more. Here is a summary:
+
+| **Data Type** | **Description**                | **Example**                 |
+|------------------|---------------------------------|---------------------|
+| **Numeric**   | Numbers, including decimals    | `42`, `3.14`                |
+| **Integer**   | Whole numbers                  | `5L` (use `L` for integers) |
+| **Character** | Text or strings                | `"hello"`, `'R'`            |
+| **Logical**   | Boolean values (TRUE or FALSE) | `TRUE`, `FALSE`             |
+
+R automatically assigns data types based on the values you provide. You can also specify the data type using functions like `as.numeric()`, `as.character()`, and `as.logical()`.
+
+```{r}
+numeric_var <- 5
+character_var <- "Hello, R!"
+logical_var <- TRUE
+```
+
+## Arithmetic operations
+
+R supports basic arithmetic operations like addition, subtraction, multiplication, and division.
+
+```{r}
+# Addition
+5 + 3
+
+# Subtraction
+5 - 3
+
+# Multiplication
+5 * 3
+
+# Division
+5 / 3
+
+```
+
+## Data structures in R
+
+R uses several types of data structures to organize data. Here are the key ones:
+
+### **Vectors**
+
+A vector is a collection of elements of the same data type. You can create vectors using the `c()` function.
+
+```{r}
+# The c function combines elements into a vector
+vector <- c(1, 2, 3, 4, 5)
+```
+
+Access elements in a vector using square brackets `[]`.
+
+```{r}
+# Access the first element of the vector
+vector[1]
+vector[2:4] # Access elements 2 to 4
+```
+
+::: callout-important
+## Exercise
+
+Create a vector with the numbers 1, 2, 3, 4, and 5. Access the third element of the vector.
+:::
+
+::: {.callout-note collapse="true"}
+## Solution
+
+```{r}
+vector <- c(1, 2, 3, 4, 5)
+vector[3]
+```
+:::
+
+### **Lists**
+
+A list is a collection of elements of different data types. You can create lists using the `list()` function.
+
+```{r}
+# Create a list with different data types
+my_list <- list("R", 3.14, TRUE)
+```
+
+Access elements in a list using double square brackets `[[]]`.
+
+```{r}
+# Access the first element of the list
+my_list[[1]]
+```
+
+### **Data frames**
+
+A data frame is a two-dimensional data structure with rows and columns. You can create data frames using the `data.frame()` function.
+
+```{r}
+df <- data.frame(
+  Name = c("Alice", "Bob", "Charlie"),
+  Age = c(25, 30, 35),
+  IsStudent = c(TRUE, FALSE, TRUE)
+)
+
+```
+
+Access data using column names or indices:
+
+```{r}
+df$Name      # Access the "Name" column
+df[1, ]      # Access the first row
+df[, "Age"]  # Access the "Age" column
+```
+
+## Basic functions in R
+
+R has a wide range of built-in functions for data manipulation, statistics, and visualization. Here are some common functions:
+
+| **Function** | **Description**                                 | **Example**             | **Output**         |
+|----------------|------------------------|-----------------|----------------|
+| `sum()`      | Calculate the sum of elements                   | `sum(c(1, 2, 3))`       | `6`                |
+| `mean()`     | Calculate the average                           | `mean(c(4, 5, 6))`      | `5`                |
+| `length()`   | Get the number of elements in a vector          | `length(c(1, 2, 3))`    | `3`                |
+| `seq()`      | Generate a sequence of numbers                  | `seq(1, 10, by = 2)`    | `1 3 5 7 9`        |
+| `sort()`     | Sort elements in ascending order                | `sort(c(3, 1, 2))`      | `1 2 3`            |
+| `min()`      | Find the smallest value                         | `min(c(4, 7, 2))`       | `2`                |
+| `max()`      | Find the largest value                          | `max(c(4, 7, 2))`       | `7`                |
+| `round()`    | Round numbers to a specified number of decimals | `round(3.14159, 2)`     | `3.14`             |
+| `rep()`      | Repeat elements                                 | `rep(5, times = 3)`     | `5 5 5`            |
+| `unique()`   | Extract unique elements                         | `unique(c(1, 2, 2, 3))` | `1 2 3`            |
+| `class()`    | Check the data type of an object                | `class("Hello")`        | `"character"`      |
+| `str()`      | Display the structure of an object              | `str(c(1, 2, 3))`       | `num [1:3] 1 2 3`  |
+| `summary()`  | Get a statistical summary of an object          | `summary(c(1, 2, 3))`   | Min: 1, Max: 3...  |
+| `is.na()`    | Check for missing values                        | `is.na(c(1, NA, 3))`    | `FALSE TRUE FALSE` |
+| `na.omit()`  | Remove missing values                           | `na.omit(c(1, NA, 3))`  | `1 3`              |
+
+## Excercises
+
+::: callout-important
+## Exercise
+
+1.  Create a vector with the numbers 10, 20, 30, and 40, and calculate the sum of its elements.
+2.  Create a data frame with columns for names, ages, and favorite colors. Try accessing the "ages" column.
+3.  Create a sequence of numbers from 1 to 100, but only include every 5th number.
+:::
+
+::: {.callout-note collapse="true"}
+## Solution
+
+```{r}
+# Exercise 1
+vector <- c(10, 20, 30, 40)
+sum(vector)
+
+# Exercise 2
+df <- data.frame(
+  Name = c("Alice", "Bob", "Charlie"),
+  Age = c(25, 30, 35),
+  fav_color = c("Red", "Blue", "Green")
+)
+df$Age
+
+# Exercise 3
+seq(1, 100, by = 5)
+```
+:::

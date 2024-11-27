@@ -1,0 +1,32 @@
+project:
+  type: book
+  output-dir: docs
+  
+book:
+  title: "R manual"
+  author: "Jordi Sevilla"
+  date: "27/11/2024"
+  search: true
+  downloads: ["pdf", "epub"]
+  sharing: ["twitter"]
+  chapters:
+    - index.qmd
+    - start.qmd
+    - basics.qmd
+    - io.qmd
+    - data_man.qmd
+    - data_viz.qmd
+    - stats.qmd
+    - programming.qmd
+    - fin_proj.qmd
+    
+format:
+  html:
+    self-contained: false
+    toc: true
+    toc-depth: 4
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+

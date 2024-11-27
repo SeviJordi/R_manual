@@ -1,0 +1,25 @@
+# Getting started with R
+
+<div style="text-align: justify">
+
+Before we can start coding, let's install the necessary tools:
+
+## Install R
+
+-   Download the latest version of R from [CRAN (Comprehensive R Archive Network)](https://cran.r-project.org/).
+-   Follow the installation instructions for your operating system (Windows, Mac, or Linux).
+
+## Install RStudio
+
+-   RStudio is an integrated development environment (IDE) for R that makes coding easier.
+-   Download it from [RStudio's website](https://posit.co/download/rstudio/).
+-   Install RStudio after installing R.
+
+Once you open RStudio, you'll see a user-friendly interface with four main panels:
+
+1.  **Console**: This is where you type commands and see their output.
+2.  **Script Editor**: Write and save your R scripts (your code files) here.
+3.  **Environment/History**: Displays variables, data, and your command history.
+4.  **Files/Plots/Packages/Help**: View files, plots, installed packages, and access help documentation.
+
+Take a moment to explore these panels. They'll become your primary workspace as you work with R.

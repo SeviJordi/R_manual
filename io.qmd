@@ -1,0 +1,74 @@
+# Data import and export
+
+To start working with data in R, you need to import it into the R environment. R supports a wide range of file formats for data import, including CSV, Excel, and databases. You can also export data from R to different file formats.
+
+## Importing data
+
+You can import data into R using functions like `read.csv()`, `read.table()`. Here's an example of importing a CSV file:
+
+```{r eval=FALSE}
+# Import data from a CSV file
+# Daca can come from the internet or local files
+data <- read.csv("https://raw.githubusercontent.com/SeviJordi/R_manual/refs/heads/main/data/iris.csv")
+
+head(data)  # Display the first few rows of the data
+```
+
+```{r echo=FALSE}
+library(knitr)
+data <- read.csv("https://raw.githubusercontent.com/SeviJordi/R_manual/refs/heads/main/data/iris.csv")
+kable(head(data))
+```
+
+::: callout-tip
+Tabular data can be separated by commas, tabs, or other delimiters. You can specify the delimiter using the `sep` argument in the `read.csv()` function. By default, it assumes a comma as the delimiter.
+:::
+
+## Exporting data
+
+You can export data from R to different file formats using functions like `write.csv()`, `write.table()`. Here's an example of exporting data to a CSV file:
+
+```{r eval=FALSE}
+# Export data to a CSV file
+write.csv(data, "data.csv") # Save the data to a file named "data.csv"
+```
+
+By default, the `write.csv()` function includes row names in the output file. You can disable this by setting `row.names = FALSE`.
+
+```{r eval=FALSE}
+write.csv(data, "data.csv", row.names = FALSE)
+```
+
+`write.csv()` stores data in CSV format, but you can use `write.table()` to export data in other formats like tab-separated values (TSV) or plain text.
+
+```{r eval=FALSE}
+write.table(data, "data.txt", sep = "\t") # Export data as tab-separated values
+```
+
+## Excercises
+
+::: callout-important
+## Exercise
+
+1.  Read the CSV file kleb_data.csv from the following URL: <https://raw.githubusercontent.com/SeviJordi/R_manual/refs/heads/main/data/kleb_data.csv>.
+
+2.  Show the first rows of the data.
+
+3.  Export the data to a tab-separated values (TSV) file named `kleb_data.tsv`.
+:::
+
+::: {.callout-note collapse="true"}
+## Solution
+
+```{r eval=FALSE}
+
+# Exercise 1
+data <- read.csv("https://raw.githubusercontent.com/SeviJordi/R_manual/refs/heads/main/data/kleb_data.csv")
+
+# Exercise 2
+head(data)
+
+# Exercise 3
+write.table(data, "kleb_data.tsv", sep = "\t")
+```
+:::

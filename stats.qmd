@@ -1,0 +1,243 @@
+# Statistical analysis
+
+<div style="text-align: justify">
+
+R is a powerful tool for statistical analysis. It provides a wide range of functions and packages for conducting statistical tests, modeling data, and exploring relationships between variables. In this section, we'll cover some basic statistical analysis techniques using R.
+
+## Descriptive statistics
+
+Descriptive statistics are used to summarize and describe the main features of a dataset. R provides several functions for calculating descriptive statistics, such as mean, median, standard deviation, and quantiles.
+
+Let's calculate some descriptive statistics for the `iris` dataset.
+
+```{r}
+# Calculate the mean, median, standard deviation, variance, range, and 
+#  quantiles for Sepal.Length
+
+# Mean (average)
+mean(iris$Sepal.Length)
+
+# Median (middle value)
+median(iris$Sepal.Length)
+
+# Standard deviation (spread of data)
+sd(iris$Sepal.Length)
+
+# Variance (spread of data squared)
+var(iris$Sepal.Length)
+
+# Range (difference between max and min)
+range(iris$Sepal.Length)
+
+# Quantiles (values that divide the dataset into parts)
+quantile(iris$Sepal.Length)
+
+# Calculate the summary statistics Sepal.Length
+summary(iris$Sepal.Length)
+
+```
+
+## Hypothesis testing
+
+Hypothesis testing is used to make inferences about populations based on sample data. The most common tests include t-tests, chi-square tests, and ANOVA.
+
+### T-test (One-sample and Two-sample)
+
+The t-test is implemented in R with the `t.test` function. A t-test compares the means of two groups to determine if they are statistically different from each other. There are two types of t-tests: one-sample t-test and two-sample t-test.
+
+The one-sample t-test checks if the mean of a sample is significantly different from a known value (e.g., the population mean).
+
+```{r}
+# One-sample t-test
+# Check if the mean Sepal.Length is significantly different from 5.8
+t.test(iris$Sepal.Length, mu = 5.8)
+```
+
+The output of the t-test includes the t-statistic, degrees of freedom, and p-value. The p-value indicates the probability of observing the data if the null hypothesis is true. A small p-value (typically less than 0.05) suggests that the null hypothesis should be rejected. The null hypothesis in this case for the t-test is that the means are nos different.
+
+The confidence interval can be set with the `conf.level` parameter. By default, it is set to 0.95. It indicates the probability that the true mean lies within the interval.
+
+The two-sample t-test compares the means of two independent groups. It is used to determine if the means of two groups are significantly different from each other.
+
+```{r}
+# Two-sample t-test
+# Check if the mean Sepal.Length is significantly different to the mean of 
+#  Sepal.Width
+t.test(iris$Sepal.Length, iris$Sepal.Width)
+```
+
+::: callout-important
+## Exercise
+
+1.  Perform a one-sample t-test to check if the mean Sepal.Width is significantly different from 3.15. Is the same to check if it is geater than 3.15? Investigate.
+
+2.Using the data from the `bd_students.csv`, compare the math and science grades. Are they significantly different? Investigate.
+:::
+
+::: {.callout-note collapse="true"}
+## Solution
+
+```{r}
+# One-sample t-test
+# Check if the mean Sepal.Width is significantly different from 3.0
+test <- t.test(iris$Sepal.Width, mu = 3.15)
+sprintf("The p-value is %f", test$p.value)
+
+# The p-value is less than 0.05, so we reject the null hypothesis that
+#  the mean Sepal.Width is equal to 3.15.
+
+# We can also check if the mean Sepal.Width is greater than 3.15
+test <- t.test(iris$Sepal.Width, mu = 3.15, alternative = "greater")
+sprintf("The p-value is %f", test$p.value)
+
+# The p-value is greater than 0.05, so we fail to reject the null hypothesis
+#  that the mean Sepal.Width is greater than 3.15.
+
+# Two-sample t-test
+# Check if the mean math and science grades are significantly different
+data <- read.csv("https://raw.githubusercontent.com/SeviJordi/R_manual/refs/heads/main/data/bd_students.csv")
+test <- t.test(data$math, data$science)
+sprintf("The p-value is %f", test$p.value)
+
+# The p-value is less than 0.05, so we reject the null hypothesis that the
+#  mean math and science grades are equal.
+```
+:::
+
+### Chi-square test
+
+The chi-square test is used to determine if there is a significant association between two categorical variables. It is implemented in R with the `chisq.test` function.
+
+The chi-square test returns the chi-square statistic, degrees of freedom, and p-value. A small p-value (typically less than 0.05) suggests that the null hypothesis should be rejected. The null hypothesis in this case is that the two variables are independent.
+
+```{r warning=FALSE}
+# Chi-square test
+# Check if there is a significant association between the student
+#  group and the location
+chisq.test(data$stu_group, data$location)
+
+# The p-value is less than 0.05, so we reject the null hypothesis that
+#  the student group and location are independent.
+```
+
+### ANOVA
+
+ANOVA (Analysis of Variance) is used to compare the means of three or more groups to determine if they are significantly different from each other. It is implemented in R with the `aov` function.
+
+The ANOVA test returns the F-statistic, degrees of freedom, and p-value. A small p-value (typically less than 0.05) suggests that the null hypothesis should be rejected. The null hypothesis in this case is that the means of the groups are equal.
+
+```{r}
+# Test if the math grades are equal for the different student groups
+model <- aov(math ~ stu_group, data = data) 
+# Formula: dependent variable ~ independent variable
+summary(model)
+
+# The p-value is less than 0.05, so we reject the null hypothesis that
+#  the math grades are equal for the different student groups.
+# It is seen in the plot we made before.
+```
+
+::: callout-important
+## Exercise
+
+1.  Using the data from the `bd_students.csv`, perform an ANOVA test to check if the science grades are equal for the different locations. Are they significantly different? Investigate.
+:::
+
+::: {.callout-note collapse="true"}
+## Solution
+
+```{r}
+# Test if the science grades are equal for the different locations
+model <- aov(science ~ location, data = data)
+summary(model)
+
+# The p-value is less than 0.05, so we reject the null hypothesis that
+#  the science grades are equal for the different locations.
+```
+:::
+
+### Correlation
+
+Correlation is used to measure the strength and direction of the relationship between two continuous variables. The correlation coefficient ranges from -1 to 1, where -1 indicates a perfect negative correlation, 0 indicates no correlation, and 1 indicates a perfect positive correlation. In R, the correlation coefficient can be calculated with the `cor` function. To test if the correlation is statistically significant, the `cor.test` function can be used. It returns the correlation coefficient, p-value, and confidence interval. A small p-value (typically less than 0.05) suggests that the correlation is statistically significant.
+
+```{r}
+# Calculate the correlation between Sepal.Length and Sepal.Width in the 
+#  iris dataset
+
+corelation <- cor(iris$Sepal.Length, iris$Sepal.Width)
+sprintf("The correlation coefficient is %f", corelation)
+
+# Is significant?
+test <- cor.test(iris$Sepal.Length, iris$Sepal.Width)
+sprintf("The p-value is %f", test$p.value)
+
+```
+
+::: callout-important
+## Exercise
+
+1.  Using the data from the `bd_students.csv`, calculate the correlation between the math and science grades. Is it statistically significant? Investigate.
+:::
+
+::: {.callout-note collapse="true"}
+## Solution
+
+```{r}
+data <- read.csv("https://raw.githubusercontent.com/SeviJordi/R_manual/refs/heads/main/data/bd_students.csv")
+
+# Calculate the correlation between the math and science grades
+correlation <- cor(data$math, data$science)
+sprintf("The correlation coefficient is %f", correlation)
+
+# Is the correlation significant?
+test <- cor.test(data$math, data$science)
+sprintf("The p-value is %f", test$p.value)
+
+# The p-value is less than 0.05, so we reject the null hypothesis that
+#  the correlation between math and science grades is zero.
+```
+:::
+
+### Linear Regression
+
+Linear regression models the relationship between a dependent variable and an independent variable by fitting a linear equation to observed data. It is used to predict the value of the dependent variable based on the value of the independent variable. In R, linear regression can be performed using the `lm` function.
+
+```{r}
+# Fit a linear regression model to predict Sepal.Length from Petal.Length
+model <- lm(Sepal.Length ~ Petal.Length, data = iris)
+summary(model)
+```
+
+In this case, the p-value associated with the coefficient of the independent variable indicates whether the relationship is statistically significant. A small p-value (typically less than 0.05) suggests that the independent variable is a significant predictor of the dependent variable.
+
+For the linear model that we just made, the p-value is `r summary(model)$coefficients[2,4]`. This means that the Petal.Length is a significant predictor of the Sepal.Length. Also is important to see the r-squared value, that is `r summary(model)$r.squared`, that indicates the proportion of the variance in the dependent variable that is predictable from the independent variable.
+
+::: callout-important
+## Exercise
+
+1.  Using the data from the `bd_students.csv`, fit a linear regression model to predict the math grade from the science grade. Is the relationship statistically significant? How much is the proportion of variance of the math grade explained by the science grade?.
+:::
+
+::: {.callout-note collapse="true"}
+## Solution
+
+```{r}
+data <- read.csv("https://raw.githubusercontent.com/SeviJordi/R_manual/refs/heads/main/data/bd_students.csv")
+
+# Fit a linear regression model to predict math grade from science grade
+model <- lm(math ~ science, data = data)
+sum <- summary(model)
+
+# Is the relationship significant?
+sprintf("The p-value is %f", sum$coefficients[2,4])
+# The p-value is less than 0.05, so we reject the null hypothesis that
+#  the science grade is not a significant predictor of the math grade.
+
+# How much of the variance in the math grade is explained by the science grade?
+sprintf("The proportion of variance explained is %f", sum$r.squared)
+# The proportion of variance explained is 0.64, which means that 64% of the
+#  variance in the math grade is predictable from the science grade.
+
+```
+:::
+

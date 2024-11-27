@@ -1,0 +1,21 @@
+# Final Project
+
+For the final project, you will analyze a dataset of your choice using the techniques and concepts covered in this manual. You can choose any dataset that interests you or is relevant to your field of study. Here are some steps to guide you through the project:
+
+1.  **Choose a dataset**: Find a dataset that interests you or is relevant to your field of study. You can use datasets from online repositories.
+
+2.  **Explore the dataset**: Load the dataset into R and explore its structure, summary statistics, and visualizations.
+
+3.  **Perform data analysis**: Perform descriptive statistics, hypothesis testing, and regression analysis to answer research questions or explore relationships in the data.
+
+4.  **Create visualizations**: Create visualizations to present your findings and insights from the data.
+
+::: callout-tip
+You can found a lot of datasets in the following repositories:
+
+-   [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/index.php)
+-   [Kaggle Datasets](https://www.kaggle.com/datasets)
+
+You can also uso any of the datasets that we have used in this manual.
+:::
+

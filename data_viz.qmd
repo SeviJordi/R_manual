@@ -1,0 +1,122 @@
+# Data visualization
+
+<div style="text-align: justify">
+
+Data visualization is one of the most powerful ways to communicate your data insights. R has several options for creating visualizations, from base R graphics to advanced plotting libraries like **ggplot2**. In this section, we'll focus on the **ggplot2** package, which provides a flexible, powerful, and elegant system for creating visualizations. **ggplot2** is part of the **tidyverse** package, so you can load it by loading the **tidyverse** package. See the **ggplot2 cheat sheet** [here](https://posit.co/wp-content/uploads/2022/10/data-visualization-1.pdf).
+
+```{r eval=FALSE}
+library(tidyverse)
+```
+
+The basic structure of a **ggplot2** plot consists of three main components:
+
+1.  **Data**: The dataset you want to visualize.
+2.  **Aesthetics**: The mapping between variables in the data and visual properties of the plot (e.g., x-axis, y-axis, color, size).
+3.  **Geometries**: The geometric objects that represent the data in the plot (e.g., points, lines, bars).
+
+We are going to run some examples using the `iris` dataset, which is included in R by default.
+
+## Create a scatter plot of Sepal.Length vs. Petal.Length.
+
+```{r message=FALSE, warning=FALSE, echo=TRUE}
+library(tidyverse) # Load the tidyverse package
+
+p <- ggplot(iris) + # create a ggplot object with the data
+  aes(x = Sepal.Length, y = Petal.Length) + # map variables to visual properties with aes()
+  geom_point() # add points to the plot
+
+p # display the plot
+```
+
+We can customize the plot by changing the labs. The `labs()` function is used to set the titles of the plot and axes.
+
+```{r}
+p = p + labs(title = "Scatter plot of Sepal.Length vs. Petal.Length",
+         x = "Sepal Length",
+         y = "Petal Length")
+p
+```
+
+The theme of the plot can be customized using the `theme()` function. There are some buiders themes in ggplot2, like `theme_minimal()`, `theme_light()`, `theme_dark()`, `theme_classic()`, `theme_void()`, and `theme_bw()`.
+
+```{r}
+p <- p + theme_bw()
+p
+```
+
+Finally, we can add more variables to the plot, adding Species as the color of the dots.
+
+```{r}
+p <- p + aes(color = Species)
+p
+```
+
+## Excercises
+
+::: callout-important
+## Exercise
+
+For this exercise, use the `bd_students` dataset. <https://raw.githubusercontent.com/SeviJordi/R_manual/refs/heads/main/data/bd_students.csv>.
+
+1.  Explore the data and undesrtand the variables.
+2.  create a bar plot for the *stu_group* variable. Do you see any problem with the data? Try to fix it.
+3.  Create a scatter plot for the *english* and *math* variables. Are those variables correlated? Can you obseve any clusters in the data? Have them something to do with the *stu_group* variable?
+
+Explore the posibility of doing more complex plots with ggplot2. You can find more information in the [ggplot2 documentation](https://ggplot2.tidyverse.org/).
+:::
+
+::: {.callout-note collapse="true"}
+## Solution
+
+```{r}
+data <- read.csv("https://raw.githubusercontent.com/SeviJordi/R_manual/refs/heads/main/data/bd_students.csv")
+
+# Exercise 2
+data %>%
+  ggplot(aes(x = stu_group)) +
+  geom_bar() + 
+  labs(title = "Number of students by group",
+       x = "Student group",
+       y = "Number of students") + 
+  theme_bw()
+
+# We can see that there is a problem with the student groups. 
+#  Sometimes they are capitalized and sometimes not. 
+#  We can fix this by using the tolower() function.
+
+data <- data %>%
+  mutate(stu_group = tolower(stu_group))
+
+# Now we can create the plot again
+data %>%
+  ggplot(aes(x = stu_group)) +
+  geom_bar()  + 
+  labs(title = "Number of students by group",
+       x = "Student group",
+       y = "Number of students") + 
+  theme_bw()
+
+# Exercise 3
+data %>%
+  ggplot(aes(x = english, y = math)) +
+  geom_point() +
+  labs(title = "Scatter plot of English vs. Math",
+       x = "English",
+       y = "Math") +
+  theme_bw()
+
+# The variables are positively correlated and there are three clusters 
+#  in the data. We can color the points by the student group to see if 
+#  the clusters are related to this variable.
+
+data %>%
+  ggplot(aes(x = english, y = math, color = stu_group)) +
+  geom_point() +
+  labs(title = "Scatter plot of English vs. Math",
+       x = "English",
+       y = "Math") +
+  theme_bw()
+
+```
+:::
+
