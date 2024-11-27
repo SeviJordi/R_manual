@@ -21,7 +21,7 @@ website:
       - text: "3. I/O"
         href: io.html
       - text: "4. Data management"
-        href: data
+        href: data_man.qmd
       - text: "5. Data visualization"
         href: data_viz.html
       - text: "6. Statistics"
@@ -37,8 +37,6 @@ format:
     self-contained: false
     toc: true
     toc-depth: 4
-  pdf:
-    documentclass: scrreprt
 
 editor: visual
 
