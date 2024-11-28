@@ -17,11 +17,13 @@ RStudio is more than just a tool for writing R scripts; it supports the creation
 An R script is a plain text file where you write and save R code.
 
 **Uses:**
+
 - Writing and executing R code.
 - Saving code for reproducibility.
 - Automating tasks such as data cleaning, analysis, or visualization.
 
 **How to create:**
+
 1. Go to the RStudio menu.
 2. Select **File > New File > R Script**.
 3. Write your R code and save it with a `.R` extension.
@@ -53,6 +55,7 @@ plot(x, y, type = "l", col = "blue", lwd = 2)
 An R Markdown file is a powerful tool for combining text, code, and output in a single document. It allows you to create dynamic, reproducible reports that can be exported to formats like HTML, PDF, and Word. You can execute code chunks and view the output inline, making it ideal for exploratory data analysis.
 
 **Uses:**
+
 - Generating dynamic reports.
 - Creating presentations.
 - Writing technical documentation.
@@ -60,11 +63,13 @@ An R Markdown file is a powerful tool for combining text, code, and output in a 
 - Creating interactive documents with immediate feedback.
 
 **How to create:**
+
 1. Go to **File > New File > R Markdown**.
 2. Fill in the required fields (e.g., Title, Author, Default Output Format).
 3. Write your content in Markdown syntax and embed R code chunks using backticks.
 
 **Output formats:**
+
 - HTML
 - PDF (requires LaTeX)
 - Microsoft Word
@@ -94,22 +99,26 @@ You can embed R code chunks like the one below (remove comments):
 A Quarto file (`.qmd`) is a powerful document format that supports dynamic, reproducible content. It’s an evolution of R Markdown, allowing you to integrate R and other programming languages (like Python) seamlessly.
 
 **Uses:**
+
 - Authoring scientific papers, reports, and blogs.
 - Creating dashboards and interactive documents.
 - Writing technical documentation.
 
 **How to create:**
+
 1. Go to **File > New File > Quarto Document**.
 2. Select the desired format (e.g., HTML, PDF, Word).
 3. Write content using Markdown syntax and embed code chunks with R or other languages.
 
 **Output formats:**
+
 - HTML
 - PDF (requires LaTeX)
 - Microsoft Word
 - Interactive dashboards (e.g., Flexdashboard)
 
 **Additional features:**
+
 - Enhanced cross-language support (e.g., Python, Julia).
 - Better support for extensions and themes compared to R Markdown.
 - Supports publishing to Quarto sites or external platforms like GitHub Pages (Like this website).
@@ -160,9 +169,11 @@ Also python code:
 The R Workspace file stores the entire workspace, including all objects and variables. It is automatically saved as `.RData` when you exit RStudio, but you can also save it manually.
 
 **Uses:**
+
 - Preserving the current state of your environment for future sessions.
 
 **How to save and load:**
+
 - Save workspace: `save.image("workspace.RData")`
 - Load workspace: `load("workspace.RData")`
 

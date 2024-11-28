@@ -63,8 +63,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../src/io.html" rel="next">
-<link href="../src/basics.html" rel="prev">
+<link href="../src/basics.html" rel="next">
+<link href="../src/start.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -133,7 +133,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../src/files.html">3. Files</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../src/files.html">2. Files</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -166,14 +166,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../src/basics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2. Basics</span></a>
+  <a href="../src/files.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">2. Files</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../src/files.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">3. Files</span></a>
+  <a href="../src/basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Basics</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -253,8 +253,18 @@ p {
 <section id="r-script-.r" class="level2">
 <h2 class="anchored" data-anchor-id="r-script-.r">R Script (.R)</h2>
 <p><strong>What is it?</strong> An R script is a plain text file where you write and save R code.</p>
-<p><strong>Uses:</strong> - Writing and executing R code. - Saving code for reproducibility. - Automating tasks such as data cleaning, analysis, or visualization.</p>
-<p><strong>How to create:</strong> 1. Go to the RStudio menu. 2. Select <strong>File &gt; New File &gt; R Script</strong>. 3. Write your R code and save it with a <code>.R</code> extension.</p>
+<p><strong>Uses:</strong></p>
+<ul>
+<li>Writing and executing R code.</li>
+<li>Saving code for reproducibility.</li>
+<li>Automating tasks such as data cleaning, analysis, or visualization.</li>
+</ul>
+<p><strong>How to create:</strong></p>
+<ol type="1">
+<li>Go to the RStudio menu.</li>
+<li>Select <strong>File &gt; New File &gt; R Script</strong>.</li>
+<li>Write your R code and save it with a <code>.R</code> extension.</li>
+</ol>
 <p><strong>Example:</strong></p>
 <div class="cell">
 <div class="code-with-filename">
@@ -293,9 +303,26 @@ p {
 <section id="r-markdown-.rmd" class="level2">
 <h2 class="anchored" data-anchor-id="r-markdown-.rmd">R Markdown (.Rmd)</h2>
 <p><strong>What is it?</strong> An R Markdown file is a powerful tool for combining text, code, and output in a single document. It allows you to create dynamic, reproducible reports that can be exported to formats like HTML, PDF, and Word. You can execute code chunks and view the output inline, making it ideal for exploratory data analysis.</p>
-<p><strong>Uses:</strong> - Generating dynamic reports. - Creating presentations. - Writing technical documentation. - Iterative data exploration. - Creating interactive documents with immediate feedback.</p>
-<p><strong>How to create:</strong> 1. Go to <strong>File &gt; New File &gt; R Markdown</strong>. 2. Fill in the required fields (e.g., Title, Author, Default Output Format). 3. Write your content in Markdown syntax and embed R code chunks using backticks.</p>
-<p><strong>Output formats:</strong> - HTML - PDF (requires LaTeX) - Microsoft Word</p>
+<p><strong>Uses:</strong></p>
+<ul>
+<li>Generating dynamic reports.</li>
+<li>Creating presentations.</li>
+<li>Writing technical documentation.</li>
+<li>Iterative data exploration.</li>
+<li>Creating interactive documents with immediate feedback.</li>
+</ul>
+<p><strong>How to create:</strong></p>
+<ol type="1">
+<li>Go to <strong>File &gt; New File &gt; R Markdown</strong>.</li>
+<li>Fill in the required fields (e.g., Title, Author, Default Output Format).</li>
+<li>Write your content in Markdown syntax and embed R code chunks using backticks.</li>
+</ol>
+<p><strong>Output formats:</strong></p>
+<ul>
+<li>HTML</li>
+<li>PDF (requires LaTeX)</li>
+<li>Microsoft Word</li>
+</ul>
 <p><strong>Example:</strong></p>
 <div class="cell">
 <div class="code-with-filename">
@@ -320,10 +347,31 @@ p {
 <section id="quarto-document-.qmd" class="level2">
 <h2 class="anchored" data-anchor-id="quarto-document-.qmd">Quarto Document (.qmd)</h2>
 <p><strong>What is it?</strong> A Quarto file (<code>.qmd</code>) is a powerful document format that supports dynamic, reproducible content. It’s an evolution of R Markdown, allowing you to integrate R and other programming languages (like Python) seamlessly.</p>
-<p><strong>Uses:</strong> - Authoring scientific papers, reports, and blogs. - Creating dashboards and interactive documents. - Writing technical documentation.</p>
-<p><strong>How to create:</strong> 1. Go to <strong>File &gt; New File &gt; Quarto Document</strong>. 2. Select the desired format (e.g., HTML, PDF, Word). 3. Write content using Markdown syntax and embed code chunks with R or other languages.</p>
-<p><strong>Output formats:</strong> - HTML - PDF (requires LaTeX) - Microsoft Word - Interactive dashboards (e.g., Flexdashboard)</p>
-<p><strong>Additional features:</strong> - Enhanced cross-language support (e.g., Python, Julia). - Better support for extensions and themes compared to R Markdown. - Supports publishing to Quarto sites or external platforms like GitHub Pages (Like this website).</p>
+<p><strong>Uses:</strong></p>
+<ul>
+<li>Authoring scientific papers, reports, and blogs.</li>
+<li>Creating dashboards and interactive documents.</li>
+<li>Writing technical documentation.</li>
+</ul>
+<p><strong>How to create:</strong></p>
+<ol type="1">
+<li>Go to <strong>File &gt; New File &gt; Quarto Document</strong>.</li>
+<li>Select the desired format (e.g., HTML, PDF, Word).</li>
+<li>Write content using Markdown syntax and embed code chunks with R or other languages.</li>
+</ol>
+<p><strong>Output formats:</strong></p>
+<ul>
+<li>HTML</li>
+<li>PDF (requires LaTeX)</li>
+<li>Microsoft Word</li>
+<li>Interactive dashboards (e.g., Flexdashboard)</li>
+</ul>
+<p><strong>Additional features:</strong></p>
+<ul>
+<li>Enhanced cross-language support (e.g., Python, Julia).</li>
+<li>Better support for extensions and themes compared to R Markdown.</li>
+<li>Supports publishing to Quarto sites or external platforms like GitHub Pages (Like this website).</li>
+</ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -378,8 +426,15 @@ Tip
 <section id="r-workspace-file-.rdata" class="level2">
 <h2 class="anchored" data-anchor-id="r-workspace-file-.rdata">R Workspace File (.RData)</h2>
 <p><strong>What is it?</strong> The R Workspace file stores the entire workspace, including all objects and variables. It is automatically saved as <code>.RData</code> when you exit RStudio, but you can also save it manually.</p>
-<p><strong>Uses:</strong> - Preserving the current state of your environment for future sessions.</p>
-<p><strong>How to save and load:</strong> - Save workspace: <code>save.image("workspace.RData")</code> - Load workspace: <code>load("workspace.RData")</code></p>
+<p><strong>Uses:</strong></p>
+<ul>
+<li>Preserving the current state of your environment for future sessions.</li>
+</ul>
+<p><strong>How to save and load:</strong></p>
+<ul>
+<li>Save workspace: <code>save.image("workspace.RData")</code></li>
+<li>Load workspace: <code>load("workspace.RData")</code></li>
+</ul>
 <hr>
 </section>
 <section id="summary-table-of-file-types" class="level2">
@@ -1004,13 +1059,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../src/basics.html" class="pagination-link" aria-label="2. Basics">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">2. Basics</span>
+      <a href="../src/start.html" class="pagination-link" aria-label="1. Start">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">1. Start</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../src/io.html" class="pagination-link" aria-label="4. I/O">
-        <span class="nav-page-text">4. I/O</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../src/basics.html" class="pagination-link" aria-label="3. Basics">
+        <span class="nav-page-text">3. Basics</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

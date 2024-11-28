@@ -27,10 +27,10 @@ website:
         href: src/index.qmd
       - text: "1. Start"
         href: src/start.qmd
-      - text: "2. Basics"
-        href: src/basics.qmd
-      - text: "3. Files"
+      - text: "2. Files"
         href: src/files.qmd
+      - text: "3. Basics"
+        href: src/basics.qmd
       - text: "4. I/O"
         href: src/io.qmd
       - text: "5. Data manipulation"
