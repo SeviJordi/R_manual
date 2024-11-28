@@ -216,7 +216,7 @@
     "section": "",
     "text": "Here’s a quick overview of R’s syntax and rules:\n\n\n\n\n\n\nTips\n\n\n\n\n\n\nUse the Tab key for auto-completion.\nUse the up arrow in the Console to cycle through previous commands.\nAccess help for any function by typing ?function_name or help(function_name).\n\n\n\n\n\n\nUse # to add comments to your code. R ignores everything after #.\n\n# This is a comment\n\n\n\n\nUse &lt;- or = to assign values to variables.\n\n1variable1 = 5\n2variable2 &lt;- 10\n\n\n1\n\nAssign the value 5 to variable1.\n\n2\n\nAssign the value 10 to variable2.\n\n\n\n\nThe R variables follow some naming conventions:\n\nVariable names must start with a letter and can contain letters, numbers, and underscores (_).\nAvoid using reserved words like if, for, while, etc\n\n\n\n\nR has several data types, including numeric, character, logical, and more. Here is a summary:\n\n\n\n\n\n\n\n\nData Type\nDescription\nExample\n\n\n\n\nNumeric\nNumbers, including decimals\n42, 3.14\n\n\nInteger\nWhole numbers\n5L (use L for integers)\n\n\nCharacter\nText or strings\n\"hello\", 'R'\n\n\nLogical\nBoolean values (TRUE or FALSE)\nTRUE, FALSE\n\n\n\nR automatically assigns data types based on the values you provide. You can also specify the data type using functions like as.numeric(), as.character(), and as.logical().\n\n1numeric_var &lt;- 5\n2character_var &lt;- \"Hello, R!\"\n3logical_var &lt;- TRUE\n\n\n1\n\nAssign the numeric value 5 to numeric_var.\n\n2\n\nAssign the character value \"Hello, R!\" to character_var.\n\n3\n\nAssign the logical value TRUE to logical_var.\n\n\n\n\n\n\n\nR supports basic arithmetic operations like addition, subtraction, multiplication, and division.\n\n15 + 3\n25 - 3\n35 * 3\n45 / 3\n\n\n1\n\nAdd 5 and 3.\n\n2\n\nSubtract 3 from 5.\n\n3\n\nMultiply 5 and 3.\n\n4\n\nDivide 5 by 3.\n\n\n\n\n\n\n\nR uses several types of data structures to organize data. Here are the key ones:\n\n\nA vector is a collection of elements of the same data type. You can create vectors using the c() function.\n\n# The c function combines elements into a vector\nvector &lt;- c(1, 2, 3, 4, 5)\n\nAccess elements in a vector using square brackets [].\n\n# Access the first element of the vector\nvector[1]\n1vector[2:4]\n\n\n1\n\nAccess the second to fourth elements of the vector.\n\n\n\n\n\n\n\n\n\n\nExercise\n\n\n\nCreate a vector with the numbers 1, 2, 3, 4, and 5. Access the third element of the vector.\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n1vector &lt;- c(1, 2, 3, 4, 5)\n2vector[3]\n\n\n1\n\nCreate a vector with the numbers 1, 2, 3, 4, and 5.\n\n2\n\nAccess the third element of the vector.\n\n\n\n\n\n\n\n\n\n\nA list is a collection of elements of different data types. You can create lists using the list() function.\n\n# Create a list with different data types\nmy_list &lt;- list(\"R\", 3.14, TRUE)\n\nAccess elements in a list using double square brackets [[]].\n\n# Access the first element of the list\nmy_list[[1]]\n\n\n\n\nA data frame is a two-dimensional data structure with rows and columns. You can create data frames using the data.frame() function.\n\ndf &lt;- data.frame(\n  Name = c(\"Alice\", \"Bob\", \"Charlie\"),\n  Age = c(25, 30, 35),\n  IsStudent = c(TRUE, FALSE, TRUE)\n)\n\nAccess data using column names or indices:\n\n1df$Name\n2df[1, ]\n3df[, \"Age\"]\n\n\n1\n\nAccess the Name column of the data frame.\n\n2\n\nAccess the first row of the data frame.\n\n3\n\nAccess the Age column of the data frame.\n\n\n\n\n\n\n\n\nR has a wide range of built-in functions for data manipulation, statistics, and visualization. Here are some common functions:\n\n\n\n\n\n\n\n\n\nFunction\nDescription\nExample\nOutput\n\n\n\n\nsum()\nCalculate the sum of elements\nsum(c(1, 2, 3))\n6\n\n\nmean()\nCalculate the average\nmean(c(4, 5, 6))\n5\n\n\nlength()\nGet the number of elements in a vector\nlength(c(1, 2, 3))\n3\n\n\nseq()\nGenerate a sequence of numbers\nseq(1, 10, by = 2)\n1 3 5 7 9\n\n\nsort()\nSort elements in ascending order\nsort(c(3, 1, 2))\n1 2 3\n\n\nmin()\nFind the smallest value\nmin(c(4, 7, 2))\n2\n\n\nmax()\nFind the largest value\nmax(c(4, 7, 2))\n7\n\n\nround()\nRound numbers to a specified number of decimals\nround(3.14159, 2)\n3.14\n\n\nrep()\nRepeat elements\nrep(5, times = 3)\n5 5 5\n\n\nunique()\nExtract unique elements\nunique(c(1, 2, 2, 3))\n1 2 3\n\n\nclass()\nCheck the data type of an object\nclass(\"Hello\")\n\"character\"\n\n\nstr()\nDisplay the structure of an object\nstr(c(1, 2, 3))\nnum [1:3] 1 2 3\n\n\nsummary()\nGet a statistical summary of an object\nsummary(c(1, 2, 3))\nMin: 1, Max: 3…\n\n\nis.na()\nCheck for missing values\nis.na(c(1, NA, 3))\nFALSE TRUE FALSE\n\n\nna.omit()\nRemove missing values\nna.omit(c(1, NA, 3))\n1 3\n\n\n\n\n\n\n\n\n\n\n\n\nExercise\n\n\n\n\nCreate a vector with the numbers 10, 20, 30, and 40, and calculate the sum of its elements.\nCreate a data frame with columns for names, ages, and favorite colors. Try accessing the “ages” column.\nCreate a sequence of numbers from 1 to 100, but only include every 5th number.\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n# Exercise 1\nvector &lt;- c(10, 20, 30, 40)\nsum(vector)\n\n# Exercise 2\ndf &lt;- data.frame(\n  Name = c(\"Alice\", \"Bob\", \"Charlie\"),\n  Age = c(25, 30, 35),\n  fav_color = c(\"Red\", \"Blue\", \"Green\")\n)\ndf$Age\n\n# Exercise 3\nseq(1, 100, by = 5)",
     "crumbs": [
-      "2. Basics"
+      "3. Basics"
     ]
   },
   {
@@ -226,7 +226,7 @@
     "section": "",
     "text": "Use # to add comments to your code. R ignores everything after #.\n\n# This is a comment",
     "crumbs": [
-      "2. Basics"
+      "3. Basics"
     ]
   },
   {
@@ -236,7 +236,7 @@
     "section": "",
     "text": "Use &lt;- or = to assign values to variables.\n\n1variable1 = 5\n2variable2 &lt;- 10\n\n\n1\n\nAssign the value 5 to variable1.\n\n2\n\nAssign the value 10 to variable2.\n\n\n\n\nThe R variables follow some naming conventions:\n\nVariable names must start with a letter and can contain letters, numbers, and underscores (_).\nAvoid using reserved words like if, for, while, etc",
     "crumbs": [
-      "2. Basics"
+      "3. Basics"
     ]
   },
   {
@@ -246,7 +246,7 @@
     "section": "",
     "text": "R has several data types, including numeric, character, logical, and more. Here is a summary:\n\n\n\n\n\n\n\n\nData Type\nDescription\nExample\n\n\n\n\nNumeric\nNumbers, including decimals\n42, 3.14\n\n\nInteger\nWhole numbers\n5L (use L for integers)\n\n\nCharacter\nText or strings\n\"hello\", 'R'\n\n\nLogical\nBoolean values (TRUE or FALSE)\nTRUE, FALSE\n\n\n\nR automatically assigns data types based on the values you provide. You can also specify the data type using functions like as.numeric(), as.character(), and as.logical().\n\n1numeric_var &lt;- 5\n2character_var &lt;- \"Hello, R!\"\n3logical_var &lt;- TRUE\n\n\n1\n\nAssign the numeric value 5 to numeric_var.\n\n2\n\nAssign the character value \"Hello, R!\" to character_var.\n\n3\n\nAssign the logical value TRUE to logical_var.",
     "crumbs": [
-      "2. Basics"
+      "3. Basics"
     ]
   },
   {
@@ -256,7 +256,7 @@
     "section": "",
     "text": "R supports basic arithmetic operations like addition, subtraction, multiplication, and division.\n\n15 + 3\n25 - 3\n35 * 3\n45 / 3\n\n\n1\n\nAdd 5 and 3.\n\n2\n\nSubtract 3 from 5.\n\n3\n\nMultiply 5 and 3.\n\n4\n\nDivide 5 by 3.",
     "crumbs": [
-      "2. Basics"
+      "3. Basics"
     ]
   },
   {
@@ -266,7 +266,7 @@
     "section": "",
     "text": "R uses several types of data structures to organize data. Here are the key ones:\n\n\nA vector is a collection of elements of the same data type. You can create vectors using the c() function.\n\n# The c function combines elements into a vector\nvector &lt;- c(1, 2, 3, 4, 5)\n\nAccess elements in a vector using square brackets [].\n\n# Access the first element of the vector\nvector[1]\n1vector[2:4]\n\n\n1\n\nAccess the second to fourth elements of the vector.\n\n\n\n\n\n\n\n\n\n\nExercise\n\n\n\nCreate a vector with the numbers 1, 2, 3, 4, and 5. Access the third element of the vector.\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n1vector &lt;- c(1, 2, 3, 4, 5)\n2vector[3]\n\n\n1\n\nCreate a vector with the numbers 1, 2, 3, 4, and 5.\n\n2\n\nAccess the third element of the vector.\n\n\n\n\n\n\n\n\n\n\nA list is a collection of elements of different data types. You can create lists using the list() function.\n\n# Create a list with different data types\nmy_list &lt;- list(\"R\", 3.14, TRUE)\n\nAccess elements in a list using double square brackets [[]].\n\n# Access the first element of the list\nmy_list[[1]]\n\n\n\n\nA data frame is a two-dimensional data structure with rows and columns. You can create data frames using the data.frame() function.\n\ndf &lt;- data.frame(\n  Name = c(\"Alice\", \"Bob\", \"Charlie\"),\n  Age = c(25, 30, 35),\n  IsStudent = c(TRUE, FALSE, TRUE)\n)\n\nAccess data using column names or indices:\n\n1df$Name\n2df[1, ]\n3df[, \"Age\"]\n\n\n1\n\nAccess the Name column of the data frame.\n\n2\n\nAccess the first row of the data frame.\n\n3\n\nAccess the Age column of the data frame.",
     "crumbs": [
-      "2. Basics"
+      "3. Basics"
     ]
   },
   {
@@ -276,7 +276,7 @@
     "section": "",
     "text": "R has a wide range of built-in functions for data manipulation, statistics, and visualization. Here are some common functions:\n\n\n\n\n\n\n\n\n\nFunction\nDescription\nExample\nOutput\n\n\n\n\nsum()\nCalculate the sum of elements\nsum(c(1, 2, 3))\n6\n\n\nmean()\nCalculate the average\nmean(c(4, 5, 6))\n5\n\n\nlength()\nGet the number of elements in a vector\nlength(c(1, 2, 3))\n3\n\n\nseq()\nGenerate a sequence of numbers\nseq(1, 10, by = 2)\n1 3 5 7 9\n\n\nsort()\nSort elements in ascending order\nsort(c(3, 1, 2))\n1 2 3\n\n\nmin()\nFind the smallest value\nmin(c(4, 7, 2))\n2\n\n\nmax()\nFind the largest value\nmax(c(4, 7, 2))\n7\n\n\nround()\nRound numbers to a specified number of decimals\nround(3.14159, 2)\n3.14\n\n\nrep()\nRepeat elements\nrep(5, times = 3)\n5 5 5\n\n\nunique()\nExtract unique elements\nunique(c(1, 2, 2, 3))\n1 2 3\n\n\nclass()\nCheck the data type of an object\nclass(\"Hello\")\n\"character\"\n\n\nstr()\nDisplay the structure of an object\nstr(c(1, 2, 3))\nnum [1:3] 1 2 3\n\n\nsummary()\nGet a statistical summary of an object\nsummary(c(1, 2, 3))\nMin: 1, Max: 3…\n\n\nis.na()\nCheck for missing values\nis.na(c(1, NA, 3))\nFALSE TRUE FALSE\n\n\nna.omit()\nRemove missing values\nna.omit(c(1, NA, 3))\n1 3",
     "crumbs": [
-      "2. Basics"
+      "3. Basics"
     ]
   },
   {
@@ -286,7 +286,7 @@
     "section": "",
     "text": "Exercise\n\n\n\n\nCreate a vector with the numbers 10, 20, 30, and 40, and calculate the sum of its elements.\nCreate a data frame with columns for names, ages, and favorite colors. Try accessing the “ages” column.\nCreate a sequence of numbers from 1 to 100, but only include every 5th number.\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n# Exercise 1\nvector &lt;- c(10, 20, 30, 40)\nsum(vector)\n\n# Exercise 2\ndf &lt;- data.frame(\n  Name = c(\"Alice\", \"Bob\", \"Charlie\"),\n  Age = c(25, 30, 35),\n  fav_color = c(\"Red\", \"Blue\", \"Green\")\n)\ndf$Age\n\n# Exercise 3\nseq(1, 100, by = 5)",
     "crumbs": [
-      "2. Basics"
+      "3. Basics"
     ]
   },
   {
